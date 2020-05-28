@@ -1,0 +1,33 @@
+h1{
+    font-family: Candara;
+}
+
+*{
+    font-family: Cambria;
+}
+
+li{
+    margin-top:5px;
+    font-size: 18px;
+}
+
+label{
+    display: block;
+    margin: 5px 0;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td, th{
+    padding: 5px;
+    border-bottom: 1px solid #aaa;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
