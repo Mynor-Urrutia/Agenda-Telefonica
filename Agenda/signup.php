@@ -1,10 +1,8 @@
 <?php
-	
+
   require 'database.php';
 
   $message = '';
-
-  
 
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
@@ -21,18 +19,16 @@
   }
 ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Registro de Cuenta</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Crear Cuenta</title>
+	<!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="fonts/fontawesome-free-5.13.0-web/css/all.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 <!--===============================================================================================-->	
@@ -43,56 +39,70 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-</head>
-<body>
-    
+  </head>
+  <body>
+    <?php if(!empty($message)): ?>
+      <p> <?= $message ?></p>
+    <?php endif; ?>
 
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-	  <a class="navbar-brand" href="index.php">Agenda Telefonica</a>
-	  </nav>
-        
     <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="images/img-01.png" alt="IMG">
 				</div>
-				<form action="login.php" method="post" class="login100-form validate-form">
+
+				<form class="login100-form validate-form" method="POST" action="signup.php">
 					<span class="login100-form-title">
-						Inicio de Sesión	
+						Crear cuenta
 					</span>
-					<div class="wrap-input100 validate-input">
-						<input type="email" class="input100" name="email" placeholder="Correo Electronico">
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Correo Electronico">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Ingresa la contraseña">
-						<input type="password" class="input100" name="password" placeholder="Contraseña">
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password" placeholder="Ingrese Contraseña">
+						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fas fa-unlock-alt" aria-hidden="true"></i>
+							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
-         	 		</div>
-					<div class="container-login100-form-btn">					
-            			<input type="submit" value="Crear Cuenta" class="login100-form-btn">
 					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password2" placeholder="Reingrese Contraseña">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Crear Cuenta
+						</button>
+					</div>
+
 					<div class="text-center p-t-136">
-          				<span class="txt1">
+					<span class="txt1">
 							Ya tienes una cuenta
 						</span>
 						<a class="txt2" href="login.php">
-							Inicia Sesión
+							Inicia sesión
 						</a>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-
+	
 	
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -107,5 +117,6 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-</body>
+
+  </body>
 </html>
